@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Grace · Starry Birthday · RSVP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.8rem;
+            margin: 0;
+            background: linear-gradient(145deg, #0f0e2a 0%, #1a1840 40%, #2a2858 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* starry background */
+        .starry-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            animation: twinkle var(--duration) infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.15;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .star:nth-child(1) {
+            width: 3px;
+            height: 3px;
+            top: 8%;
+            left: 5%;
+            --duration: 3s;
+        }
+        .star:nth-child(2) {
+            width: 4px;
+            height: 4px;
+            top: 15%;
+            right: 12%;
+            --duration: 4.2s;
+            animation-delay: 1s;
+        }
+        .star:nth-child(3) {
+            width: 2px;
+            height: 2px;
+            top: 30%;
+            left: 20%;
+            --duration: 2.8s;
+            animation-delay: 0.5s;
+        }
+        .star:nth-child(4) {
+            width: 5px;
+            height: 5px;
+            top: 45%;
+            right: 25%;
+            --duration: 5s;
+            animation-delay: 2s;
+        }
+        .star:nth-child(5) {
+            width: 3px;
+            height: 3px;
+            top: 60%;
+            left: 8%;
+            --duration: 3.6s;
+            animation-delay: 1.5s;
+        }
+        .star:nth-child(6) {
+            width: 4px;
+            height: 4px;
+            top: 75%;
+            right: 8%;
+            --duration: 4.8s;
+            animation-delay: 0.8s;
+        }
+        .star:nth-child(7) {
+            width: 2px;
+            height: 2px;
+            top: 85%;
+            left: 35%;
+            --duration: 3.2s;
+            animation-delay: 2.5s;
+        }
+        .star:nth-child(8) {
+            width: 3px;
+            height: 3px;
+            top: 12%;
+            left: 55%;
+            --duration: 4s;
+            animation-delay: 1.2s;
+        }
+        .star:nth-child(9) {
+            width: 5px;
+            height: 5px;
+            top: 50%;
+            left: 45%;
+            --duration: 3.8s;
+            animation-delay: 0.3s;
+        }
+        .star:nth-child(10) {
+            width: 2px;
+            height: 2px;
+            top: 70%;
+            left: 60%;
+            --duration: 4.5s;
+            animation-delay: 1.8s;
+        }
+        .star:nth-child(11) {
+            width: 4px;
+            height: 4px;
+            top: 25%;
+            left: 80%;
+            --duration: 3.4s;
+            animation-delay: 2.2s;
+        }
+        .star:nth-child(12) {
+            width: 3px;
+            height: 3px;
+            top: 90%;
+            left: 75%;
+            --duration: 4.1s;
+            animation-delay: 0.7s;
+        }
+
+        /* subtle nebula glow */
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: floatNebula 20s infinite alternate ease-in-out;
+        }
+        .nebula1 {
+            width: 500px;
+            height: 500px;
+            top: -20%;
+            left: -20%;
+            background: rgba(120, 80, 255, 0.08);
+            animation-duration: 25s;
+        }
+        .nebula2 {
+            width: 400px;
+            height: 400px;
+            bottom: -20%;
+            right: -20%;
+            background: rgba(255, 150, 200, 0.06);
+            animation-duration: 30s;
+            animation-delay: -8s;
+        }
+        .nebula3 {
+            width: 300px;
+            height: 300px;
+            top: 40%;
+            left: 30%;
+            background: rgba(100, 200, 255, 0.05);
+            animation-duration: 22s;
+            animation-delay: -15s;
+        }
+
+        @keyframes floatNebula {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(40px, -30px) scale(1.1);
+            }
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 750px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* card – dreamy glass with soft star colors */
+        .invite-card {
+            width: 100%;
+            background: rgba(255, 248, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 3.2rem;
+            padding: 2.8rem 3rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3),
+                0 0 80px rgba(120, 80, 255, 0.06),
+                inset 0 0 80px rgba(255, 200, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.2s ease;
+            color: #1a1840;
+        }
+
+        .invite-card:hover {
+            transform: scale(1.005);
+        }
+
+        .header-icons {
+            font-size: 2.8rem;
+            letter-spacing: 8px;
+            margin-bottom: 0.1rem;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4a3a8a, #7a5aaa, #4a7aaa);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 6s ease-in-out infinite;
+            margin-top: 0.2rem;
+            margin-bottom: 0.1rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            -webkit-text-fill-color: #5a4a7a;
+            background: none;
+            color: #5a4a7a;
+            background: rgba(100, 80, 180, 0.10);
+            padding: 0.1rem 1.2rem;
+            border-radius: 60px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(100, 80, 180, 0.10);
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #4a3a6a;
+            border-left: 3px solid #8a7acc;
+            padding-left: 1.2rem;
+            margin-top: 0.4rem;
+            margin-bottom: 2rem;
+            background: rgba(100, 80, 180, 0.04);
+            border-radius: 0 20px 20px 0;
+            line-height: 1.8;
+        }
+
+        .subhead .highlight {
+            background: linear-gradient(135deg, #6a4a9a, #4a7aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        /* detail grid */
+        .detail-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            background: rgba(200, 180, 230, 0.10);
+            padding: 1.5rem 1.8rem;
+            border-radius: 2.4rem;
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(180, 160, 220, 0.10);
+            backdrop-filter: blur(4px);
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.05rem;
+            color: #3a2a5a;
+            font-weight: 450;
+        }
+
+        .detail-item span:first-child {
+            font-weight: 600;
+            color: #5a4a7a;
+            min-width: 70px;
+        }
+
+        .detail-item i {
+            font-style: normal;
+            background: rgba(180, 160, 220, 0.10);
+            padding: 0.2rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            color: #4a3a6a;
+            border: 1px solid rgba(180, 160, 220, 0.05);
+        }
+
+        .rsvp-title {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #4a3a7a;
+            margin-top: 0.2rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid rgba(180, 160, 220, 0.15);
+            padding-bottom: 0.5rem;
+        }
+
+        .rsvp-title span:last-child {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #6a5a8a;
+        }
+
+        .rsvp-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.3rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #4a3a6a;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            font-family: 'Inter', sans-serif;
+            padding: 0.85rem 1.4rem;
+            border: 1px solid rgba(180, 160, 220, 0.15);
+            border-radius: 60px;
+            background: rgba(255, 248, 255, 0.80);
+            font-size: 1rem;
+            color: #1a1840;
+            transition: 0.3s;
+            box-shadow: 0 2px 12px rgba(100, 80, 180, 0.03);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #8a7aaa;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #8a7acc;
+            outline: 2px solid rgba(120, 80, 200, 0.08);
+            box-shadow: 0 4px 20px rgba(100, 80, 180, 0.06);
+            background: rgba(255, 248, 255, 0.95);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236a5a8a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1.2rem center;
+        }
+
+        .form-group textarea {
+            border-radius: 28px;
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        /* radio group – simplified: yes/no with plus one */
+        .radio-group {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0.3rem 0;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            color: #3a2a5a;
+            font-size: 1rem;
+            background: rgba(200, 180, 230, 0.06);
+            padding: 0.3rem 1.4rem 0.3rem 0.8rem;
+            border-radius: 60px;
+            border: 1px solid rgba(180, 160, 220, 0.06);
+            text-transform: none;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .radio-group label:hover {
+            background: rgba(200, 180, 230, 0.12);
+        }
+
+        .radio-group input[type="radio"] {
+            accent-color: #7a5aaa;
+            width: 1.2rem;
+            height: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* plus one toggle – inline */
+        .plusone-group {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            padding: 0.2rem 0;
+        }
+
+        .plusone-group label {
+            font-weight: 500;
+            color: #3a2a5a;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .plusone-group input[type="checkbox"] {
+            accent-color: #7a5aaa;
+            width: 1.2rem;
+            height: 1.2rem;
+            cursor: pointer;
+        }
+
+        .plusone-group .hint {
+            font-size: 0.8rem;
+            color: #8a7aaa;
+            font-weight: 400;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #6a4a9a, #4a7aaa);
+            border: none;
+            padding: 1rem 2.2rem;
+            border-radius: 60px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 0.4rem;
+            box-shadow: 0 8px 30px rgba(100, 60, 180, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(100, 60, 180, 0.25);
+            background: linear-gradient(135deg, #7a5aaa, #5a8aba);
+        }
+
+        .btn-submit:active {
+            transform: scale(0.97);
+        }
+
+        #rsvpMessage {
+            margin-top: 1.4rem;
+            background: rgba(200, 180, 230, 0.12);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 0.9rem 1.8rem;
+            font-weight: 500;
+            color: #3a2a5a;
+            border-left: 4px solid #8a7acc;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            border: 1px solid rgba(180, 160, 220, 0.06);
+        }
+
+        #rsvpMessage.show {
+            display: flex;
+        }
+
+        .footnote {
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: #8a7aaa;
+            text-align: center;
+            border-top: 1px solid rgba(180, 160, 220, 0.06);
+            padding-top: 1.2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .footnote span {
+            background: rgba(200, 180, 230, 0.04);
+            padding: 0.1rem 1.4rem;
+            border-radius: 60px;
+            border: 1px solid rgba(180, 160, 220, 0.04);
+        }
+
+        /* secret trigger */
+        .secret-trigger {
+            text-align: center;
+            margin-top: 0.8rem;
+            font-size: 0.6rem;
+            color: rgba(100, 80, 180, 0.12);
+            cursor: default;
+            user-select: none;
+            letter-spacing: 4px;
+            transition: color 0.5s;
+            font-family: monospace;
+        }
+        .secret-trigger:hover {
+            color: rgba(100, 80, 180, 0.30);
+        }
+
+        /* passcode overlay – starry */
+        .passcode-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 14, 42, 0.80);
+            backdrop-filter: blur(16px);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        .passcode-overlay.active {
+            display: flex;
+        }
+        .passcode-box {
+            background: rgba(255, 248, 255, 0.92);
+            backdrop-filter: blur(20px);
+            padding: 2.8rem 3rem;
+            border-radius: 3rem;
+            border: 1px solid rgba(180, 160, 220, 0.15);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+        }
+        .passcode-box h2 {
+            color: #4a3a7a;
+            margin-bottom: 0.3rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .passcode-box p {
+            color: #6a5a8a;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .passcode-box input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border-radius: 60px;
+            border: 1px solid rgba(180, 160, 220, 0.15);
+            font-size: 1.4rem;
+            text-align: center;
+            letter-spacing: 8px;
+            background: rgba(255, 248, 255, 0.80);
+            color: #1a1840;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            font-family: monospace;
+        }
+        .passcode-box input:focus {
+            outline: 2px solid rgba(120, 80, 200, 0.10);
+            border-color: #8a7acc;
+        }
+        .passcode-box .btn-row {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+        .passcode-box .btn-row button {
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-unlock {
+            background: linear-gradient(135deg, #6a4a9a, #4a7aaa);
+            color: white;
+            box-shadow: 0 4px 20px rgba(100, 60, 180, 0.10);
+        }
+        .btn-unlock:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+        .btn-cancel-pass {
+            background: rgba(200, 180, 230, 0.10);
+            color: #4a3a6a;
+            border: 1px solid rgba(180, 160, 220, 0.06);
+        }
+        .btn-cancel-pass:hover {
+            background: rgba(200, 180, 230, 0.18);
+        }
+        .passcode-error {
+            color: #b06a8a;
+            font-size: 0.85rem;
+            margin-top: -0.5rem;
+            margin-bottom: 0.8rem;
+            min-height: 1.4rem;
+        }
+
+        /* RSVP list card */
+        .list-card {
+            display: none;
+            width: 100%;
+            background: rgba(255, 248, 255, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 3.2rem;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(180, 160, 220, 0.08);
+            transition: transform 0.2s ease;
+            color: #1a1840;
+        }
+        .list-card.visible {
+            display: block;
+        }
+
+        .list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(180, 160, 220, 0.08);
+            padding-bottom: 0.7rem;
+        }
+        .list-header h2 {
+            font-size: 1.5rem;
+            color: #4a3a7a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+        .list-header .badge {
+            background: linear-gradient(135deg, #6a4a9a, #4a7aaa);
+            color: white;
+            padding: 0.1rem 1rem;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .list-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .btn-clear,
+        .btn-export,
+        .btn-hide-list {
+            background: rgba(200, 180, 230, 0.06);
+            border: 1px solid rgba(180, 160, 220, 0.06);
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #5a4a7a;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+        .btn-clear:hover,
+        .btn-export:hover,
+        .btn-hide-list:hover {
+            background: rgba(200, 180, 230, 0.12);
+            border-color: rgba(180, 160, 220, 0.12);
+            color: #4a3a7a;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: 1.5rem;
+            background: rgba(255, 248, 255, 0.30);
+            padding: 0.2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        th {
+            text-align: left;
+            padding: 0.8rem 1rem;
+            background: rgba(200, 180, 230, 0.04);
+            color: #5a4a7a;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(180, 160, 220, 0.06);
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid rgba(180, 160, 220, 0.04);
+            color: #3a2a5a;
+            vertical-align: middle;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 0.1rem 1rem;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .status-yes {
+            background: rgba(80, 200, 160, 0.12);
+            color: #2a7a6a;
+            border: 1px solid rgba(80, 200, 160, 0.06);
+        }
+        .status-no {
+            background: rgba(200, 100, 120, 0.10);
+            color: #8a4a5a;
+            border: 1px solid rgba(200, 100, 120, 0.06);
+        }
+        .status-maybe {
+            background: rgba(200, 180, 80, 0.10);
+            color: #7a6a2a;
+            border: 1px solid rgba(200, 180, 80, 0.06);
+        }
+        .plusone-badge {
+            font-size: 0.8rem;
+            color: #6a5a8a;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: #8a7aaa;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .invite-card,
+            .list-card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 2rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .detail-item {
+                flex-wrap: wrap;
+                gap: 0.1rem;
+            }
+            .detail-item span:first-child {
+                min-width: 60px;
+            }
+            .radio-group {
+                gap: 1rem;
+            }
+            .plusone-group {
+                gap: 0.8rem;
+            }
+            .list-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .passcode-box {
+                padding: 1.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- starry background -->
+    <div class="starry-bg">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="nebula nebula1"></div>
+        <div class="nebula nebula2"></div>
+        <div class="nebula nebula3"></div>
+    </div>
+
+    <!-- PASSCODE OVERLAY -->
+    <div class="passcode-overlay" id="passcodeOverlay">
+        <div class="passcode-box">
+            <h2>✦ ACCESS RSVP ✦</h2>
+            <p>Enter the starlight code</p>
+            <input type="password" id="passcodeInput" placeholder="····" maxlength="10" autofocus>
+            <div class="passcode-error" id="passcodeError"></div>
+            <div class="btn-row">
+                <button class="btn-unlock" id="unlockBtn">Unlock</button>
+                <button class="btn-cancel-pass" id="cancelPassBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <!-- INVITATION CARD -->
+        <div class="invite-card" role="main">
+            <div class="header-icons">⭐ ✦ 🌟</div>
+            <h1>
+                Grace <small>· starry birthday</small>
+            </h1>
+            <div class="subhead">
+                <span class="highlight">Grace</span> · shining bright like the stars ✨<br>
+                join us for a celestial celebration under the night sky
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-item"><span>📅 DATE</span> <i>Saturday, 7 August · 6:00 PM</i></div>
+                <div class="detail-item"><span>📍 VENUE</span> <i>Luna Garden · 215 Oak St, Austin</i></div>
+                <div class="detail-item"><span>🌙 VIBE</span> <i>star-gazing · dreamy · celestial</i></div>
+            </div>
+
+            <div class="rsvp-title">
+                <span>⭐ RSVP</span>
+                <span>— let us know you're coming</span>
+            </div>
+
+            <form id="rsvpForm" class="rsvp-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="fullName">👤 Your name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="e.g. Taylor Blake" required>
+                </div>
+                <div class="inline-group" style="display:flex; flex-wrap:wrap; gap:1.2rem;">
+                    <div class="form-group" style="flex:2;">
+                        <label for="email">✉️ Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+
+                <!-- Attendance: simplified to Yes/No with plus one -->
+                <div class="form-group">
+                    <label>✨ Will you be there?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="attending" value="yes" checked>
+                            Yes, I'll be there ⭐
+                        </label>
+                        <label>
+                            <input type="radio" name="attending" value="no">
+                            Can't make it 🌙
+                        </label>
+                        <label>
+                            <input type="radio" name="attending" value="maybe">
+                            Maybe ✦
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Plus one: checkbox -->
+                <div class="form-group">
+                    <label>👥 Plus one?</label>
+                    <div class="plusone-group">
+                        <label>
+                            <input type="checkbox" id="plusOne" name="plusOne">
+                            I'm bringing a guest ✨
+                        </label>
+                        <span class="hint">(let us know if you need a +1)</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">💬 Message for Grace</label>
+                    <textarea id="message" name="message" placeholder="Any song requests, dietary needs, or a sweet note for the birthday star..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit"><span>⭐</span> Send RSVP <span>✦</span></button>
+            </form>
+
+            <div id="rsvpMessage"><span style="font-size:1.7rem;">🌟</span> <span id="messageText">Thanks! See you under the stars ✨</span></div>
+
+            <!-- SECRET TRIGGER -->
+            <div class="secret-trigger" id="secretTrigger">⏣ ◈ ⏣ ◈ ⏣</div>
+
+            <div class="footnote"><span>✦ starlight</span><span>🎂 cake & cosmos</span><span>✨ celebrate</span></div>
+        </div>
+
+        <!-- RSVP LIST CARD -->
+        <div class="list-card" id="listCard">
+            <div class="list-header">
+                <h2>📋 RSVP list <span class="badge" id="countBadge">0</span></h2>
+                <div class="list-actions">
+                    <button class="btn-export" id="exportBtn">📥 Export</button>
+                    <button class="btn-clear" id="clearBtn">🗑️ Clear</button>
+                    <button class="btn-hide-list" id="hideListBtn">🔒 Hide</button>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Plus One</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rsvpTableBody">
+                        <tr>
+                            <td colspan="5" class="empty-state">✨ No RSVPs yet — be the first!</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ----- CONSTANTS -----
+            const PASSCODE = '1234';
+            const STORAGE_KEY = 'starryRsvpList';
+
+            // ----- DOM refs -----
+            const secretTrigger = document.getElementById('secretTrigger');
+            const passcodeOverlay = document.getElementById('passcodeOverlay');
+            const passcodeInput = document.getElementById('passcodeInput');
+            const passcodeError = document.getElementById('passcodeError');
+            const unlockBtn = document.getElementById('unlockBtn');
+            const cancelPassBtn = document.getElementById('cancelPassBtn');
+            const listCard = document.getElementById('listCard');
+            const hideListBtn = document.getElementById('hideListBtn');
+
+            // ----- STORAGE -----
+            function getRsvpList() {
+                try {
+                    const data = localStorage.getItem(STORAGE_KEY);
+                    return data ? JSON.parse(data) : [];
+                } catch { return []; }
+            }
+
+            function saveRsvpList(list) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+            }
+
+            // ----- RENDER TABLE -----
+            function renderTable() {
+                const list = getRsvpList();
+                const tbody = document.getElementById('rsvpTableBody');
+                const badge = document.getElementById('countBadge');
+                badge.textContent = list.length;
+
+                if (list.length === 0) {
+                    tbody.innerHTML =
+                        `<tr><td colspan="5" class="empty-state">✨ No RSVPs yet — be the first!</td></tr>`;
+                    return;
+                }
+
+                const sorted = [...list].reverse();
+                let html = '';
+                sorted.forEach((entry) => {
+                    const statusClass = entry.attending === 'yes' ? 'status-yes' :
+                        entry.attending === 'no' ? 'status-no' : 'status-maybe';
+                    const statusLabel = entry.attending === 'yes' ? '✅ Yes' :
+                        entry.attending === 'no' ? '❌ No' : '🤔 Maybe';
+                    const plusOneLabel = entry.plusOne ? '✨ Yes' : '—';
+                    const messageDisplay = entry.message ? entry.message.substring(0, 40) + (entry.message
+                        .length > 40 ? '…' : '') : '—';
+                    html += `
+                        <tr>
+                            <td><strong>${escapeHtml(entry.name)}</strong></td>
+                            <td>${escapeHtml(entry.email)}</td>
+                            <td><span class="status-badge ${statusClass}">${statusLabel}</span></td>
+                            <td class="plusone-badge">${plusOneLabel}</td>
+                            <td>${escapeHtml(messageDisplay)}</td>
+                        </tr>
+                    `;
+                });
+                tbody.innerHTML = html;
+            }
+
+            function escapeHtml(text) {
+                if (!text) return '—';
+                const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+                return String(text).replace(/[&<>"']/g, m => map[m]);
+            }
+
+            // ----- ADD RSVP -----
+            function addRsvp(entry) {
+                const list = getRsvpList();
+                list.push({
+                    id: Date.now(),
+                    name: entry.name.trim(),
+                    email: entry.email.trim(),
+                    attending: entry.attending,
+                    plusOne: entry.plusOne || false,
+                    message: entry.message ? entry.message.trim() : ''
+                });
+                saveRsvpList(list);
+                renderTable();
+            }
+
+            // ----- CLEAR -----
+            function clearAll() {
+                if (confirm('🗑️ Delete all RSVPs?')) {
+                    saveRsvpList([]);
+                    renderTable();
+                    document.getElementById('rsvpMessage').classList.remove('show');
+                }
+            }
+
+            // ----- EXPORT CSV -----
+            function exportCsv() {
+                const list = getRsvpList();
+                if (list.length === 0) {
+                    alert('No RSVPs to export yet.');
+                    return;
+                }
+                let csv = 'Name,Email,Status,Plus One,Message\n';
+                list.forEach(entry => {
+                    const status = entry.attending === 'yes' ? 'Yes' : entry.attending === 'no' ? 'No' :
+                    'Maybe';
+                    const plusOne = entry.plusOne ? 'Yes' : 'No';
+                    const message = (entry.message || '').replace(/,/g, ';').replace(/\n/g, ' ');
+                    csv += `"${entry.name}","${entry.email}","${status}","${plusOne}","${message}"\n`;
+                });
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = `rsvp_list_${new Date().toISOString().slice(0,10)}.csv`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+
+            // ----- PASSCODE LOGIC -----
+            function showPasscodeOverlay() {
+                passcodeOverlay.classList.add('active');
+                passcodeInput.value = '';
+                passcodeError.textContent = '';
+                passcodeInput.focus();
+            }
+
+            function hidePasscodeOverlay() {
+                passcodeOverlay.classList.remove('active');
+                passcodeInput.value = '';
+                passcodeError.textContent = '';
+            }
+
+            function attemptUnlock() {
+                const entered = passcodeInput.value.trim();
+                if (entered === PASSCODE) {
+                    hidePasscodeOverlay();
+                    listCard.classList.add('visible');
+                    renderTable();
+                    listCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    passcodeError.textContent = '❌ Incorrect code. Try again.';
+                    passcodeInput.value = '';
+                    passcodeInput.focus();
+                }
+            }
+
+            function hideList() {
+                listCard.classList.remove('visible');
+                hidePasscodeOverlay();
+            }
+
+            // ----- EVENT LISTENERS -----
+            secretTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (listCard.classList.contains('visible')) {
+                    listCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    return;
+                }
+                showPasscodeOverlay();
+            });
+
+            unlockBtn.addEventListener('click', attemptUnlock);
+            cancelPassBtn.addEventListener('click', hidePasscodeOverlay);
+
+            passcodeInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') attemptUnlock();
+                if (e.key === 'Escape') hidePasscodeOverlay();
+            });
+
+            passcodeOverlay.addEventListener('click', (e) => {
+                if (e.target === passcodeOverlay) hidePasscodeOverlay();
+            });
+
+            hideListBtn.addEventListener('click', hideList);
+
+            // ----- FORM HANDLER -----
+            const form = document.getElementById('rsvpForm');
+            const rsvpMessage = document.getElementById('rsvpMessage');
+            const messageText = document.getElementById('messageText');
+
+            function getAttendingValue() {
+                const radios = document.querySelectorAll('input[name="attending"]');
+                for (let radio of radios) {
+                    if (radio.checked) return radio.value;
+                }
+                return 'yes';
+            }
+
+            function handleSubmit(event) {
+                event.preventDefault();
+
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const attending = getAttendingValue();
+                const plusOne = document.getElementById('plusOne').checked;
+                const message = document.getElementById('message').value.trim();
+
+                if (!fullName || fullName.length < 2) {
+                    alert('Please enter your name ⭐');
+                    document.getElementById('fullName').focus();
+                    return;
+                }
+                if (!email || !email.includes('@') || !email.includes('.')) {
+                    alert('Please enter a valid email address ✉️');
+                    document.getElementById('email').focus();
+                    return;
+                }
+
+                addRsvp({ name: fullName, email: email, attending: attending, plusOne: plusOne, message: message });
+
+                let reply = '';
+                if (attending === 'yes') {
+                    reply = `⭐ ${fullName}, you're confirmed! ${plusOne ? 'Bringing a guest ✨' : 'Coming solo 🌟'} Can't wait to celebrate Grace!`;
+                    if (message) reply += ` <br><span style="font-weight:400;">💬 "${message}"</span>`;
+                } else if (attending === 'no') {
+                    reply = `🌙 Sorry you can't make it, ${fullName}. We'll miss you!`;
+                    if (message) reply += ` <br><span style="font-weight:400;">💬 "${message}"</span>`;
+                } else {
+                    reply = `✦ ${fullName}, you're a maybe! ${plusOne ? 'Might bring a guest ✨' : 'Probably solo'} — we'll keep you posted!`;
+                    if (message) reply += ` <br><span style="font-weight:400;">💬 "${message}"</span>`;
+                }
+                messageText.innerHTML = reply;
+                rsvpMessage.classList.add('show');
+                rsvpMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                form.reset();
+                document.querySelector('input[name="attending"][value="yes"]').checked = true;
+                document.getElementById('plusOne').checked = false;
+                document.getElementById('message').value = '';
+
+                console.log('RSVP saved (starry):', { fullName, email, attending, plusOne, message });
+            }
+
+            form.addEventListener('submit', handleSubmit);
+            document.getElementById('clearBtn').addEventListener('click', clearAll);
+            document.getElementById('exportBtn').addEventListener('click', exportCsv);
+
+            renderTable();
+        })();
+    </script>
+</body>
+</html>
